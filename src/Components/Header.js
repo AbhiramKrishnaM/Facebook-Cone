@@ -21,12 +21,12 @@ function Header() {
                 <img src="https://1000logos.net/wp-content/uploads/2016/11/Facebook-logo-500x350.png" alt="facebook"></img>
                 <div className="header__input">
                     <SearchIcon />
-                    <input type="text" />
+                    <input type="text" placeholder="Search Facebook" />
                 </div>
             </div>
 
             <div className="header__middle">
-                <div className="header__option">
+                <div className="header__option header__option--active">
                     <HomeIcon fontSize="large" />
                 </div>
                 <div className="header__option">

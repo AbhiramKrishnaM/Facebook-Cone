@@ -4,8 +4,9 @@ import Feed from './Components/Feed';
 import Login from './Components/Login';
 import './Css/App.css';
 import Widgets from './Components/Widgets';
+import { useStateValue } from './Components/StateProvider';
 function App() {
-  const user = null;
+  const [{ user }, dispatch] = useStateValue();
   return (
     // BEM naming convention
     <div className="App">

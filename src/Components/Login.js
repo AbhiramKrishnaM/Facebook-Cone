@@ -2,12 +2,19 @@ import { Button } from '@material-ui/core';
 import React from 'react';
 import { auth, provider } from "../Firebase/Firebase";
 import '../Css/Login.css';
+import { useStateValue } from './StateProvider';
+import { actionTypes } from './Reducer';
 function Login() {
+    // hook usestate which allows us to pull information fromt the datalayer
+    const [state, dispatch] = useStateValue();
     const signIn = ()=>{
         // sign in
         auth.signInWithPopup(provider)
         .then(result => {
-            console.log(result);
+            dispatch({
+                type:actionTypes.SET_USER,
+                user:result.user
+            })
         }).catch(error => alert(error.message));
     }
     return (

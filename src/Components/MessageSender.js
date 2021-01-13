@@ -5,6 +5,8 @@ import VideoCallIcon from '@material-ui/icons/VideoCall';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import { useStateValue } from './StateProvider';
+import db from "../Firebase/Firebase";
+import firebase from 'firebase';
 
 function MessageSender() {
     const [{ user }, dispatch] = useStateValue();
@@ -15,7 +17,13 @@ function MessageSender() {
         // to stop refreshing when user clicks  
         e.preventDefault();
 
-        // database functionality
+        db.collection('Posts').add({
+            Message: input,
+            timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+            profilePic: user.photoURL,
+            userName:user.displayName,
+            image:imageUrl
+        })
 
         setInput('');
         setImageUrl('');
